@@ -36,9 +36,15 @@ RUN apt-get update && apt-get install -y vim \
     && echo "deb-src http://nginx.org/packages/ubuntu/ xenial nginx" >> /etc/apt/sources.list \
     && apt-get -y update \
     && apt-get install -y nginx \
-    && apt-get install -y mysql-client \
     && apt-get install -y apache2-utils \
     && apt-get install -y varnish \
+    && cd /tmp/ \
+    && wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb \
+    && dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb \
+    && apt-get update \
+    && echo "percona-server-server-5.6 percona-server-server/root_password password secret" | sudo debconf-set-selections \
+    && echo "percona-server-server-5.6 percona-server-server/root_password_again password secret" | sudo debconf-set-selections \
+    && sudo apt-get install -y percona-server-server-5.6 percona-server-client-5.6 \
     && LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y php7.0-fpm php7.0-mysql \
