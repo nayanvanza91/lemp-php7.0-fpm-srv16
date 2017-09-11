@@ -66,9 +66,9 @@ RUN apt-get update && apt-get install -y vim \
 ADD tools/docker/nginx/nginx.conf /etc/nginx/nginx.conf
 ADD tools/docker/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 ADD tools/docker/nginx/conf.d/pma.conf /etc/nginx/conf.d/pma.conf
-ADD tools/docker/php7fpm/cli/php.ini /etc/php/7.0/cli/php.ini
-ADD tools/docker/php7fpm/fpm/php.ini /etc/php/7.0/fpm/php.ini
-ADD tools/docker/php7fpm/fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
+ADD tools/docker/php7/cli/php.ini /etc/php/7.0/cli/php.ini
+ADD tools/docker/php7/fpm/php.ini /etc/php/7.0/fpm/php.ini
+ADD tools/docker/php7/fpm/php-fpm.conf /etc/php/7.0/fpm/php-fpm.conf
 ADD tools/docker/postfix/main.cf /etc/postfix/main.cf
 ADD tools/docker/phpmyadmin/config.inc.php /phpmyadmin/config.inc.php
 
